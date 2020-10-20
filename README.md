@@ -1,14 +1,10 @@
-# Data, Results, and Analysis Repository for
-
-## "TimeCycle: Topology Inspired MEthod for the Detection of Cycling Transcripts in Circadian Time-Series Data."
-
-------------------------------------------------------------------------
+# Data, Results, and Analysis Repository for "TimeCycle: Topology Inspired MEthod for the Detection of Cycling Transcripts in Circadian Time-Series Data."
 
 #### Elan Ness-Cohn, Ravi Allada, and Rosemary Braun
 
 ------------------------------------------------------------------------
 
-### This Git Repo contains all the data, results, and analysis scripts associated with the TimeCycle algorithm.
+> This Git Repo contains all the data, results, and analysis scripts associated with the TimeCycle algorithm.
 
 -   See the TimeCycle Package at \< INSERT LINK \>
 -   See the TimeCycle Paper at \< INSERT LINK \>
@@ -29,6 +25,8 @@ Once downloaded, run 'master\_generateSyntheticData.R' found in the directory `T
 
 ------------------------------------------------------------------------
 
+### Contents
+
 The TimeCycle Git Repository includes the following:
 
 ##### Data
@@ -47,6 +45,7 @@ The TimeCycle Git Repository includes the following:
 
 ------------------------------------------------------------------------
 
+### Reference
 
 <!--
 TimeCycle is Currently Published in the <JOURNAL NAME>: [See Article]()
@@ -54,4 +53,4 @@ TimeCycle is Currently Published in the <JOURNAL NAME>: [See Article]()
 Ness-Cohn, E., Allada, R. & Braun, R. TimeCycle: Topology Inspired MEthod for the Detection of Cycling Transcripts in Circadian Time-Series Data.
 -->
 
-TimeTrial 2020, Northwestern University
+TimeCycle 2020, Northwestern University
