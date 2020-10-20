@@ -1,9 +1,9 @@
-source("~/Desktop/TimeCycleV3/Scripts/TimeCycleV3.R")
+source("~/Desktop/TimeCycle-data/Scripts/TimeCycleV3.R")
 pkg = c('TDA', 'parallel','pROC', 'imputeTS')
 loadedPkgs <- lapply(pkg,library, character.only = TRUE)
 
 #set inputs and output file names
-data <- read.delim("~/Desktop/TimeCycleV3/Data/Processed/2_48_NoiseLV_0.1_BioRep_1.txt", row.names = 1)
+data <- read.delim("~/Desktop/TimeCycle-data/Data/Processed/2_48_NoiseLV_0.1_BioRep_1.txt", row.names = 1)
 
 #set rep labels
 repLabel <- rep(1,dim(data)[2])
