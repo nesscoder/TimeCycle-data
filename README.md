@@ -21,7 +21,7 @@ Download the `.zip` file with the green download button above **or** install via
  
 ```
 
-Once downloaded, run 'master\_generateSyntheticData.R' found in the directory `TimeCycle-data/Scripts/SyntheticGenerationScripts/` to generate the synthetic data files.
+Once downloaded, run `master\_generateSyntheticData.R` found in the directory `TimeCycle-data/Scripts/SyntheticGenerationScripts/` to generate the synthetic data files.
 
 ------------------------------------------------------------------------
 
