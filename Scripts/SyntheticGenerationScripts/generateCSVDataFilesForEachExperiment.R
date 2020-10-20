@@ -1,5 +1,5 @@
 #Script Used for Generating the 225 Experiments for use by TimeCycle and JTK_Cycle
-#Load Rain Data
+#Load Data
 reps <- list(1,2,3)
 lengths <- list(24,36,48,72,96)
 splRate <- list(1,2,4)
