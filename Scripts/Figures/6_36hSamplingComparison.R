@@ -1,7 +1,7 @@
 ##########################################
 # Plot Results
 ##########################################
-load("~/Desktop/TimeCycleV3/Results/SlidingWindows/36HourComparison.Rdata")
+load("~/Desktop/TimeCycle-data/Results/SlidingWindows/36HourComparison.Rdata")
 library(UpSetR)
 library(tidyverse)
 library(ggalluvial)
@@ -65,7 +65,7 @@ ggplot(data,
 # customColors <- c("#7F3C8D","#11A579","#3969AC","#F2B701","#E73F74","#80BA5A","#E68310","#008695","#CF1C90","#f97b72","#4b4b8f","#A5AA99")
 customColors <-c("#cccccc","#377eb8","#4daf4a","#984ea3", "#ff7f00","#FFFF33","#a65628","#cccccc", "#969696", "#636363", "#252525")
 
-pdf("~/Desktop/TimeCycleV3/Results/Figures/AluvOut36.pdf", width = 14, height = 5)
+pdf("~/Desktop/TimeCycle-data/Results/Figures/AluvOut36.pdf", width = 14, height = 5)
   p1 <- plotAlluvial(data = TC_sigGenes, plotTitle = "TimeCycle", col = customColors[1:5])
   p2 <- plotAlluvial(data = JTK_sigGenes, plotTitle = "JTK_CYCLE", col = customColors[1:5])
   p3 <- plotAlluvial(data = RAIN_sigGenes, plotTitle = "RAIN", col = customColors[1:5])
@@ -87,7 +87,7 @@ rain_sg <- apply(RAIN_results_Dataset_Comp, 2, function(pVals) {
 })
 
 
-pdf("~/Desktop/TimeCycleV3/Results/Figures/36hCorr.pdf", width = 14, height = 5)
+pdf("~/Desktop/TimeCycle-data/Results/Figures/36hCorr.pdf", width = 14, height = 5)
 par(mfrow = c(1, 3), font = 2)
 for (ds in c("Hogenesch","Hughes", "Zhang")){
   

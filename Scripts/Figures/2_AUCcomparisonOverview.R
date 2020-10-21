@@ -10,7 +10,7 @@ library("Rmisc")
 #################################
 #LOAD THE DATA INTO R TIME CYCLE
 #################################
-setwd("~/Desktop/TimeCycleV3/Results/Synthetic/TimeCycle/")
+setwd("~/Desktop/TimeCycle-data/Results/Synthetic/TimeCycle/")
 all.files <- as.list(dir())
 #get Timecycle Results
 count <- 0
@@ -49,7 +49,7 @@ AUC_TimeCycle <- apply(TC_results, 2,FUN = function(exprResult){
 ##########################
 #LOAD THE DATA INTO R JTK
 ##########################
-setwd("~/Desktop/TimeCycleV3/Results/Synthetic/JTK/")
+setwd("~/Desktop/TimeCycle-data/Results/Synthetic/JTK/")
 all.files <- as.list(dir())
 #get Timecycle Results
 count <- 0
@@ -61,6 +61,7 @@ data <- lapply(all.files,FUN = function(x){
   assign(paste(all.files[[count]], sep = ""), df)
 })
 names(data) <- all.files
+load(file = "~/Desktop/TimeCycle-data/Results/Synthetic/JTK/1_24_NoiseLV_0_BioRep_1.Rdata")
 
 ###############################
 #EXTRACT DATA FRAME OF INTEREST
@@ -88,7 +89,7 @@ AUC_JTK <- apply(JTK_results,2,FUN = function(exprResult){
 ##########################
 #LOAD THE DATA INTO R Sw1pers
 ##########################
-setwd("~/Desktop/TimeCycleV3/Results/Synthetic/Sw1pers/")
+setwd("~/Desktop/TimeCycle-data/Results/Synthetic/Sw1pers/")
 all.files <- as.list(dir())
 #get Timecycle Results
 data <- lapply(all.files,function(x){
@@ -120,7 +121,7 @@ AUC_sw1pers <- apply(sw1per_results,2,FUN = function(exprResult){
 #################################
 #LOAD THE DATA INTO R TIME CYCLE
 #################################
-setwd("~/Desktop/TimeCycleV3/Results/Synthetic/RAIN/")
+setwd("~/Desktop/TimeCycle-data/Results/Synthetic/RAIN/")
 all.files <- as.list(dir())
 #get RAIN Results
 count <- 0
@@ -187,7 +188,7 @@ toPlot <- rbind(JTK_CYCLE,TimeCycle, RAIN, SW1PERs)
 
 #----------------
 
-pdf("~/Desktop/TimeCycleV3/Results/Figures/AUCcompPlots.pdf",width = 7*1.5,height = 3.5*1.5)
+pdf("~/Desktop/TimeCycle-data/Results/Figures/AUCcompPlots.pdf",width = 7*1.5,height = 3.5*1.5)
 
 toPlot <- as.data.frame(toPlot) %>%
   filter(Length != 24)
@@ -217,7 +218,7 @@ ggplot(toPlot,
 dev.off()
 
 
-
+pdf("~/Desktop/TimeCycle-data/Results/Figures/sdAUCcomp.pdf",width = 7*1.5,height = 3.5*1.5)
 sdToPlot <- toPlot %>%
   summarySE(measurevar="AUC", groupvars=c("Method","Length","Interval","Replicates")) %>%
   mutate(numSamples = (Length/Interval+1)*Replicates)
@@ -241,5 +242,5 @@ ggplot(sdToPlot,
   guides(colour = guide_legend(override.aes = list(linetype = 0, shape = 22, size = 5)), fill = guide_legend(nrow=1,byrow=TRUE)) + 
   theme(axis.text.x = element_text(angle = 45, hjust = 1), legend.position = 'bottom', legend.title = element_blank())
 
-
+dev.off()
 

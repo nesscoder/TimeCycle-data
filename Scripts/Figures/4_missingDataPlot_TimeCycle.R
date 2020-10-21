@@ -11,7 +11,7 @@ library("gridBase")
 #################################
 # LOAD THE DATA INTO R TIME CYCLE
 #################################
-setwd("~/Desktop/TimeCycleV3/Results/MissingData/TimeCycle/")
+setwd("~/Desktop/TimeCycle-data/Results/MissingData/TimeCycle/")
 all.files <- as.list(dir())
 # get Timecycle Results
 count <- 0
@@ -60,7 +60,7 @@ plotData <- data.frame(AUC_TimeCycle, noiseLevels, missingness)
 
 ## --------------------------------------- Plot Results --------------------------------
 
-pdf(file = "~/Desktop/TimeCycleV3/Results/Figures/missingness.pdf", width = 12, height = 8)
+pdf(file = "~/Desktop/TimeCycle-data/Results/Figures/missingness.pdf", width = 12, height = 8)
 # plot AUC CURVES and ROC curves layout
 layout(matrix(
   data = c(

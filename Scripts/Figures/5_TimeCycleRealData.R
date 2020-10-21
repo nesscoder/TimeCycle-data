@@ -5,7 +5,7 @@ library(tidyverse)
 library(gridExtra)
 library(ggpubr)
 
-setwd("~/Desktop/TimeCycleV3/Results/Biological/")
+setwd("~/Desktop/TimeCycle-data/Results/Biological/")
 
 ## --------------------------------------- Function for generating upset plot --------------------------------
 
@@ -198,12 +198,12 @@ isSig <- as.vector(unlist(lapply(sigGenes, function(x) {
 isSig[1] <- F
 
 
-pdf(file = "~/Desktop/TimeCycleV3/Results/Figures/upsetPlot.pdf", width = 12, height = 8)
+pdf(file = "~/Desktop/TimeCycle-data/Results/Figures/upsetPlot.pdf", width = 12, height = 8)
 plotUpset(sigGenes[isSig])
 dev.off()
 
 # create plots of cycling genes in each Dataset
-pdf(file = "~/Desktop/TimeCycleV3/Results/Figures/heatMaps.pdf", width = 4, height = 4)
+pdf(file = "~/Desktop/TimeCycle-data/Results/Figures/heatMaps.pdf", width = 4, height = 4)
 dataNames <- c("Hogenesch_1", "Hogenesch_2A", "Hogenesch_2B", "Hogenesch_4A", "Hogenesch_4B", "Hogenesch_4C", "Hogenesch_4D", "Hughes_2", "Hughes_4A", "Hughes_4B", "Zhang_2", "Zhang_4A", "Zhang_4B")
 p <- sapply(which(isSig), FUN = function(ds) {
   plotHeatmap(all.files[[ds]], datasetName = dataNames[ds])
@@ -232,7 +232,7 @@ dev.off()
 
 # pairwise plots of Data with Correlation
 
-load("~/Desktop/TimeCycleV3/Results/timeTrialAdjRealDataComplete.RData")
+load("~/Desktop/TimeCycle-data/Results/timeTrialAdjRealDataComplete.RData")
 JTK_results <- resultsAdj[[3]]
 genes <- rownames(JTK_results)
 JTK_sigGene <- apply(JTK_results, 2, function(pVal) {
@@ -251,7 +251,7 @@ names(RAIN_sigGene) <- dataNames
 #plotUpset(df = RAIN_sigGene[isSig])
 
 
-load("~/Desktop/TimeCycleV3/Results/timeTrialRealDataComplete.RData")
+load("~/Desktop/TimeCycle-data/Results/timeTrialRealDataComplete.RData")
 
 
 # Cycle <- c("Clock", "Cry1", "Npas2", "Per1", "Per3")
@@ -317,12 +317,12 @@ p3 <- ggscatterhist(
   ggtitle("Phase (h)") +
   theme(plot.title = element_text(hjust = 0.5)) 
 
-pdf(file = "~/Desktop/TimeCycleV3/Results/Figures/TC_scatterPlots.pdf", width = 12, height = 4.3)
+pdf(file = "~/Desktop/TimeCycle-data/Results/Figures/TC_scatterPlots.pdf", width = 12, height = 4.3)
 grid.arrange(grobs = list(p1,p2,p3), nrow = 1)
 dev.off()
 
 
-pdf(file = "~/Desktop/TimeCycleV3/Results/Figures/TC_corrPlots.pdf", width = 4, height = 4.5)
+pdf(file = "~/Desktop/TimeCycle-data/Results/Figures/TC_corrPlots.pdf", width = 4, height = 4.5)
 for(dataSet in c("Hogenesch_2A","Hogenesch_2B","Hughes_2", "Zhang_2") ){
 overlap <- sigGenes[[dataSet]]
 overlap_JTK <- JTK_sigGene[[dataSet]]

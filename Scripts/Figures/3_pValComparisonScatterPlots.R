@@ -10,7 +10,7 @@ library("rlang")
 #################################
 #LOAD THE DATA INTO R TIME CYCLE
 #################################
-setwd("~/Desktop/TimeCycleV3/Results/Synthetic/TimeCycle_comp/")
+setwd("~/Desktop/TimeCycle-data/Results/Synthetic/TimeCycle_comp/")
 all.files <- as.list(dir())
 #get Timecycle Results
 count <- 0
@@ -39,7 +39,7 @@ TC_results  <- as.data.frame(TC_results )
 #################################
 #LOAD THE DATA INTO R TIME CYCLE
 #################################
-setwd("~/Desktop/TimeCycleV3/Results/Synthetic/JTK/")
+setwd("~/Desktop/TimeCycle-data/Results/Synthetic/JTK/")
 all.files <- as.list(dir())
 #get JTK Results
 count <- 0
@@ -68,7 +68,7 @@ JTK_results  <- as.data.frame(JTK_results )
 #################################
 #LOAD THE DATA INTO R TIME CYCLE
 #################################
-setwd("~/Desktop/TimeCycleV3/Results/Synthetic/RAIN/")
+setwd("~/Desktop/TimeCycle-data/Results/Synthetic/RAIN/")
 all.files <- as.list(dir())
 #get RAIN Results
 count <- 0
@@ -97,7 +97,7 @@ RAIN_results  <- as.data.frame(RAIN_results)
 ##########################
 #LOAD THE DATA INTO R Sw1pers
 ##########################
-setwd("~/Desktop/TimeCycleV3/Results/Synthetic/Sw1pers/")
+setwd("~/Desktop/TimeCycle-data/Results/Synthetic/Sw1pers/")
 all.files <- as.list(dir())
 #get Timecycle Results
 data <- lapply(all.files,function(x){
@@ -252,7 +252,7 @@ plot_percentCorrect <- function(data, bottomAxis = "Method 1", topAxis = "Method
 
 
 ##--------------------------------------- Plot Results --------------------------------
-setwd("~/Desktop/TimeCycleV3/Results/Synthetic/RAIN/")
+setwd("~/Desktop/TimeCycle-data/Results/Synthetic/RAIN/")
 all.files <- as.list(dir())
 
 #what should we plot
@@ -342,7 +342,7 @@ lay <- rbind(c(1,11,12,13),
              c(6,7,3,16),
              c(8,9,10,4))
 
-pdf(paste0("~/Desktop/TimeCycleV3/Results/Figures/", gsub(pattern = ".Rdata", replacement = ".pdf", toPlot))
+pdf(paste0("~/Desktop/TimeCycle-data/Results/Figures/", gsub(pattern = ".Rdata", replacement = ".pdf", toPlot))
     ,width = 14,height = 13)
 
 grid.arrange(grobs = list(p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12,p13,p14,p15,p16), layout_matrix = lay)
