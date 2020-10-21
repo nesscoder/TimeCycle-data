@@ -4,6 +4,13 @@
 
 ------------------------------------------------------------------------
 
+<!-- badges: start -->
+[![](https://img.shields.io/github/languages/code-size/nesscoder/TimeCycle-data.svg)](https://github.com/nesscoder/TimeCycle-data)
+
+<!-- badges: end -->
+
+------------------------------------------------------------------------
+
 > This Git Repo contains all the data, results, and analysis scripts associated with the TimeCycle algorithm.
 
 -   See the TimeCycle Package at \< INSERT LINK \>
