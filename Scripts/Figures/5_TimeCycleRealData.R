@@ -223,7 +223,7 @@ dev.off()
 #   box(lwd = 3)
 #   box(lwd = 1, col = "green")
 # }
-# 
+#
 # plotTsExpression("Cry1")
 # plotTsExpression("Per1")
 # plotTsExpression("Per3")
@@ -239,16 +239,16 @@ JTK_sigGene <- apply(JTK_results, 2, function(pVal) {
   genes[pVal < 0.05]
 })
 names(JTK_sigGene) <- dataNames
-#plotUpset(df = JTK_sigGene[isSig])
+# plotUpset(df = JTK_sigGene[isSig])
 
 
 RAIN_results <- resultsAdj[[4]]
 genes <- rownames(RAIN_results)
 RAIN_sigGene <- apply(RAIN_results, 2, function(pVal) {
-  genes[p.adjust(pVal,"fdr") < 0.05]
+  genes[p.adjust(pVal, "fdr") < 0.05]
 })
 names(RAIN_sigGene) <- dataNames
-#plotUpset(df = RAIN_sigGene[isSig])
+# plotUpset(df = RAIN_sigGene[isSig])
 
 
 load("~/Desktop/TimeCycle-data/Results/timeTrialRealDataComplete.RData")
@@ -277,16 +277,16 @@ p1 <- ggscatterhist(
   x = "Hughes2012.all.data.ann_Results.Rdata.Amp",
   y = "Zhang2014.all.data.ann_Results.Rdata.Amp",
   xlab = "Hughes 2012",
-  add = "reg.line", 
+  add = "reg.line",
   add.params = list(color = "red", alpha = 0.5),
   conf.inf = T,
-  alpha  = 0.5,
-  cor.coef = T, 
-  
+  alpha = 0.5,
+  cor.coef = T,
+
   cor.method = "pearson",
   margin.plot = c("histogram"),
-  ylab = "Zhang 2014", 
-  asp = 1, 
+  ylab = "Zhang 2014",
+  asp = 1,
   ggtheme = theme_bw(base_rect_size = 2)
 ) +
   ggtitle("Log(Amplitude)") +
@@ -298,7 +298,7 @@ p2 <- ggscatterhist(
   y = "Zhang2014.all.data.ann_Results.Rdata.Period.in.Hours",
   xlab = "Hughes 2012",
   margin.plot = c("histogram"),
-  alpha  = 0.5,
+  alpha = 0.5,
   ylab = "Zhang 2014", asp = 1, ggtheme = theme_bw(base_rect_size = 2)
 ) +
   ggtitle("Period (h)") +
@@ -311,81 +311,81 @@ p3 <- ggscatterhist(
   y = "Zhang2014.all.data.ann_Results.Rdata.Phase.in.Hours",
   xlab = "Hughes 2012",
   margin.plot = c("histogram"),
-  alpha  = 0.5,
+  alpha = 0.5,
   ylab = "Zhang 2014", asp = 1, ggtheme = theme_bw(base_rect_size = 2)
 ) +
   ggtitle("Phase (h)") +
-  theme(plot.title = element_text(hjust = 0.5)) 
+  theme(plot.title = element_text(hjust = 0.5))
 
 pdf(file = "~/Desktop/TimeCycle-data/Results/Figures/TC_scatterPlots.pdf", width = 12, height = 4.3)
-grid.arrange(grobs = list(p1,p2,p3), nrow = 1)
+grid.arrange(grobs = list(p1, p2, p3), nrow = 1)
 dev.off()
 
 
 pdf(file = "~/Desktop/TimeCycle-data/Results/Figures/TC_corrPlots.pdf", width = 4, height = 4.5)
-for(dataSet in c("Hogenesch_2A","Hogenesch_2B","Hughes_2", "Zhang_2") ){
-overlap <- sigGenes[[dataSet]]
-overlap_JTK <- JTK_sigGene[[dataSet]]
-overlap_RAIN <- RAIN_sigGene[[dataSet]]
+for (dataSet in c("Hogenesch_2A", "Hogenesch_2B", "Hughes_2", "Zhang_2")) {
+  overlap <- sigGenes[[dataSet]]
+  overlap_JTK <- JTK_sigGene[[dataSet]]
+  overlap_RAIN <- RAIN_sigGene[[dataSet]]
 
-# Null Distribution - No ordering for gene sample. randomly drawn with replacement.
-Null_Cor_Zhang_Hughes <- getCorrelation(controlData = sample_n(timeSeries$Zhang2014.all.data.ann_Results.Rdata, size = 12868, replace = T), comparisonData = sample_n(timeSeries$Hughes2012.all.data.ann_Results.Rdata, size = 12868, replace = T)[, c(22:24, 1:21)])
-Null_Cor_Zhang_Hog_A <- getCorrelation(controlData = sample_n(timeSeries$Zhang2014.all.data.ann_Results.Rdata, size = 12868, replace = T), comparisonData = sample_n(timeSeries$Hogenesch2009.sub2A.data.ann_Results.Rdata, size = 12868, replace = T))
-Null_Cor_Zhang_Hog_B <- getCorrelation(controlData = sample_n(timeSeries$Zhang2014.all.data.ann_Results.Rdata, size = 12868, replace = T), comparisonData = sample_n(timeSeries$Hogenesch2009.sub2B.data.ann_Results.Rdata, size = 12868, replace = T))
-Null_Cor_Hughes_Hog_A <- getCorrelation(controlData = sample_n(timeSeries$Hughes2012.all.data.ann_Results.Rdata, size = 12868, replace = T)[, c(22:24, 1:21)], comparisonData = sample_n(timeSeries$Hogenesch2009.sub2A.data.ann_Results.Rdata, size = 12868, replace = T))
-Null_Cor_Hughes_Hog_B <- getCorrelation(controlData = sample_n(timeSeries$Hughes2012.all.data.ann_Results.Rdata, size = 12868, replace = T)[, c(22:24, 1:21)], comparisonData = sample_n(timeSeries$Hogenesch2009.sub2B.data.ann_Results.Rdata, size = 12868, replace = T))
-Null_Cor_Hog_A_Hog_B <- getCorrelation(controlData = sample_n(timeSeries$Hogenesch2009.sub2A.data.ann_Results.Rdata, size = 12868, replace = T), comparisonData = sample_n(timeSeries$Hogenesch2009.sub2B.data.ann_Results.Rdata, size = 12868, replace = T))
+  # Null Distribution - No ordering for gene sample. randomly drawn with replacement.
+  Null_Cor_Zhang_Hughes <- getCorrelation(controlData = sample_n(timeSeries$Zhang2014.all.data.ann_Results.Rdata, size = 12868, replace = T), comparisonData = sample_n(timeSeries$Hughes2012.all.data.ann_Results.Rdata, size = 12868, replace = T)[, c(22:24, 1:21)])
+  Null_Cor_Zhang_Hog_A <- getCorrelation(controlData = sample_n(timeSeries$Zhang2014.all.data.ann_Results.Rdata, size = 12868, replace = T), comparisonData = sample_n(timeSeries$Hogenesch2009.sub2A.data.ann_Results.Rdata, size = 12868, replace = T))
+  Null_Cor_Zhang_Hog_B <- getCorrelation(controlData = sample_n(timeSeries$Zhang2014.all.data.ann_Results.Rdata, size = 12868, replace = T), comparisonData = sample_n(timeSeries$Hogenesch2009.sub2B.data.ann_Results.Rdata, size = 12868, replace = T))
+  Null_Cor_Hughes_Hog_A <- getCorrelation(controlData = sample_n(timeSeries$Hughes2012.all.data.ann_Results.Rdata, size = 12868, replace = T)[, c(22:24, 1:21)], comparisonData = sample_n(timeSeries$Hogenesch2009.sub2A.data.ann_Results.Rdata, size = 12868, replace = T))
+  Null_Cor_Hughes_Hog_B <- getCorrelation(controlData = sample_n(timeSeries$Hughes2012.all.data.ann_Results.Rdata, size = 12868, replace = T)[, c(22:24, 1:21)], comparisonData = sample_n(timeSeries$Hogenesch2009.sub2B.data.ann_Results.Rdata, size = 12868, replace = T))
+  Null_Cor_Hog_A_Hog_B <- getCorrelation(controlData = sample_n(timeSeries$Hogenesch2009.sub2A.data.ann_Results.Rdata, size = 12868, replace = T), comparisonData = sample_n(timeSeries$Hogenesch2009.sub2B.data.ann_Results.Rdata, size = 12868, replace = T))
 
-# Distribution given gene ordered samples, but no filter for sig genes
-Ordered_Cor_Zhang_Hughes <- getCorrelation(controlData = timeSeries$Zhang2014.all.data.ann_Results.Rdata, comparisonData = timeSeries$Hughes2012.all.data.ann_Results.Rdata[, c(22:24, 1:21)])
-Ordered_Cor_Zhang_Hog_A <- getCorrelation(controlData = timeSeries$Zhang2014.all.data.ann_Results.Rdata, comparisonData = timeSeries$Hogenesch2009.sub2A.data.ann_Results.Rdata)
-Ordered_Cor_Zhang_Hog_B <- getCorrelation(controlData = timeSeries$Zhang2014.all.data.ann_Results.Rdata, comparisonData = timeSeries$Hogenesch2009.sub2B.data.ann_Results.Rdata)
-Ordered_Cor_Hughes_Hog_A <- getCorrelation(controlData = timeSeries$Hughes2012.all.data.ann_Results.Rdata[, c(22:24, 1:21)], comparisonData = timeSeries$Hogenesch2009.sub2A.data.ann_Results.Rdata)
-Ordered_Cor_Hughes_Hog_B <- getCorrelation(controlData = timeSeries$Hughes2012.all.data.ann_Results.Rdata[, c(22:24, 1:21)], comparisonData = timeSeries$Hogenesch2009.sub2B.data.ann_Results.Rdata)
-Ordered_Cor_Hog_A_Hog_B <- getCorrelation(controlData = timeSeries$Hogenesch2009.sub2A.data.ann_Results.Rdata, comparisonData = timeSeries$Hogenesch2009.sub2B.data.ann_Results.Rdata)
+  # Distribution given gene ordered samples, but no filter for sig genes
+  Ordered_Cor_Zhang_Hughes <- getCorrelation(controlData = timeSeries$Zhang2014.all.data.ann_Results.Rdata, comparisonData = timeSeries$Hughes2012.all.data.ann_Results.Rdata[, c(22:24, 1:21)])
+  Ordered_Cor_Zhang_Hog_A <- getCorrelation(controlData = timeSeries$Zhang2014.all.data.ann_Results.Rdata, comparisonData = timeSeries$Hogenesch2009.sub2A.data.ann_Results.Rdata)
+  Ordered_Cor_Zhang_Hog_B <- getCorrelation(controlData = timeSeries$Zhang2014.all.data.ann_Results.Rdata, comparisonData = timeSeries$Hogenesch2009.sub2B.data.ann_Results.Rdata)
+  Ordered_Cor_Hughes_Hog_A <- getCorrelation(controlData = timeSeries$Hughes2012.all.data.ann_Results.Rdata[, c(22:24, 1:21)], comparisonData = timeSeries$Hogenesch2009.sub2A.data.ann_Results.Rdata)
+  Ordered_Cor_Hughes_Hog_B <- getCorrelation(controlData = timeSeries$Hughes2012.all.data.ann_Results.Rdata[, c(22:24, 1:21)], comparisonData = timeSeries$Hogenesch2009.sub2B.data.ann_Results.Rdata)
+  Ordered_Cor_Hog_A_Hog_B <- getCorrelation(controlData = timeSeries$Hogenesch2009.sub2A.data.ann_Results.Rdata, comparisonData = timeSeries$Hogenesch2009.sub2B.data.ann_Results.Rdata)
 
-# TimeCycle - Distribution given gene ordered samples, and filtered for sig genes
-Sig_Cor_Zhang_Hughes <- getCorrelation(controlData = timeSeries$Zhang2014.all.data.ann_Results.Rdata[overlap, ], comparisonData = timeSeries$Hughes2012.all.data.ann_Results.Rdata[overlap, c(22:24, 1:21)])
-Sig_Cor_Zhang_Hog_A <- getCorrelation(controlData = timeSeries$Zhang2014.all.data.ann_Results.Rdata[overlap, ], comparisonData = timeSeries$Hogenesch2009.sub2A.data.ann_Results.Rdata[overlap, ])
-Sig_Cor_Zhang_Hog_B <- getCorrelation(controlData = timeSeries$Zhang2014.all.data.ann_Results.Rdata[overlap, ], comparisonData = timeSeries$Hogenesch2009.sub2B.data.ann_Results.Rdata[overlap, ])
-Sig_Cor_Hughes_Hog_A <- getCorrelation(controlData = timeSeries$Hughes2012.all.data.ann_Results.Rdata[overlap, c(22:24, 1:21)], comparisonData = timeSeries$Hogenesch2009.sub2A.data.ann_Results.Rdata[overlap, ])
-Sig_Cor_Hughes_Hog_B <- getCorrelation(controlData = timeSeries$Hughes2012.all.data.ann_Results.Rdata[overlap, c(22:24, 1:21)], comparisonData = timeSeries$Hogenesch2009.sub2B.data.ann_Results.Rdata[overlap, ])
-Sig_Cor_Hog_A_Hog_B <- getCorrelation(controlData = timeSeries$Hogenesch2009.sub2A.data.ann_Results.Rdata[overlap, ], comparisonData = timeSeries$Hogenesch2009.sub2B.data.ann_Results.Rdata[overlap, ])
+  # TimeCycle - Distribution given gene ordered samples, and filtered for sig genes
+  Sig_Cor_Zhang_Hughes <- getCorrelation(controlData = timeSeries$Zhang2014.all.data.ann_Results.Rdata[overlap, ], comparisonData = timeSeries$Hughes2012.all.data.ann_Results.Rdata[overlap, c(22:24, 1:21)])
+  Sig_Cor_Zhang_Hog_A <- getCorrelation(controlData = timeSeries$Zhang2014.all.data.ann_Results.Rdata[overlap, ], comparisonData = timeSeries$Hogenesch2009.sub2A.data.ann_Results.Rdata[overlap, ])
+  Sig_Cor_Zhang_Hog_B <- getCorrelation(controlData = timeSeries$Zhang2014.all.data.ann_Results.Rdata[overlap, ], comparisonData = timeSeries$Hogenesch2009.sub2B.data.ann_Results.Rdata[overlap, ])
+  Sig_Cor_Hughes_Hog_A <- getCorrelation(controlData = timeSeries$Hughes2012.all.data.ann_Results.Rdata[overlap, c(22:24, 1:21)], comparisonData = timeSeries$Hogenesch2009.sub2A.data.ann_Results.Rdata[overlap, ])
+  Sig_Cor_Hughes_Hog_B <- getCorrelation(controlData = timeSeries$Hughes2012.all.data.ann_Results.Rdata[overlap, c(22:24, 1:21)], comparisonData = timeSeries$Hogenesch2009.sub2B.data.ann_Results.Rdata[overlap, ])
+  Sig_Cor_Hog_A_Hog_B <- getCorrelation(controlData = timeSeries$Hogenesch2009.sub2A.data.ann_Results.Rdata[overlap, ], comparisonData = timeSeries$Hogenesch2009.sub2B.data.ann_Results.Rdata[overlap, ])
 
-# RAIN - Distribution given gene ordered samples and filtered for sig genes
-Sig_Cor_Zhang_Hughes_RAIN <- getCorrelation(controlData = timeSeries$Zhang2014.all.data.ann_Results.Rdata[overlap_RAIN, ], comparisonData = timeSeries$Hughes2012.all.data.ann_Results.Rdata[overlap_RAIN, c(22:24, 1:21)])
-Sig_Cor_Zhang_Hog_A_RAIN <- getCorrelation(controlData = timeSeries$Zhang2014.all.data.ann_Results.Rdata[overlap_RAIN, ], comparisonData = timeSeries$Hogenesch2009.sub2A.data.ann_Results.Rdata[overlap_RAIN, ])
-Sig_Cor_Zhang_Hog_B_RAIN <- getCorrelation(controlData = timeSeries$Zhang2014.all.data.ann_Results.Rdata[overlap_RAIN, ], comparisonData = timeSeries$Hogenesch2009.sub2B.data.ann_Results.Rdata[overlap_RAIN, ])
-Sig_Cor_Hughes_Hog_A_RAIN <- getCorrelation(controlData = timeSeries$Hughes2012.all.data.ann_Results.Rdata[overlap_RAIN, c(22:24, 1:21)], comparisonData = timeSeries$Hogenesch2009.sub2A.data.ann_Results.Rdata[overlap_RAIN, ])
-Sig_Cor_Hughes_Hog_B_RAIN <- getCorrelation(controlData = timeSeries$Hughes2012.all.data.ann_Results.Rdata[overlap_RAIN, c(22:24, 1:21)], comparisonData = timeSeries$Hogenesch2009.sub2B.data.ann_Results.Rdata[overlap_RAIN, ])
-Sig_Cor_Hog_A_Hog_B_RAIN <- getCorrelation(controlData = timeSeries$Hogenesch2009.sub2A.data.ann_Results.Rdata[overlap_RAIN, ], comparisonData = timeSeries$Hogenesch2009.sub2B.data.ann_Results.Rdata[overlap_RAIN, ])
+  # RAIN - Distribution given gene ordered samples and filtered for sig genes
+  Sig_Cor_Zhang_Hughes_RAIN <- getCorrelation(controlData = timeSeries$Zhang2014.all.data.ann_Results.Rdata[overlap_RAIN, ], comparisonData = timeSeries$Hughes2012.all.data.ann_Results.Rdata[overlap_RAIN, c(22:24, 1:21)])
+  Sig_Cor_Zhang_Hog_A_RAIN <- getCorrelation(controlData = timeSeries$Zhang2014.all.data.ann_Results.Rdata[overlap_RAIN, ], comparisonData = timeSeries$Hogenesch2009.sub2A.data.ann_Results.Rdata[overlap_RAIN, ])
+  Sig_Cor_Zhang_Hog_B_RAIN <- getCorrelation(controlData = timeSeries$Zhang2014.all.data.ann_Results.Rdata[overlap_RAIN, ], comparisonData = timeSeries$Hogenesch2009.sub2B.data.ann_Results.Rdata[overlap_RAIN, ])
+  Sig_Cor_Hughes_Hog_A_RAIN <- getCorrelation(controlData = timeSeries$Hughes2012.all.data.ann_Results.Rdata[overlap_RAIN, c(22:24, 1:21)], comparisonData = timeSeries$Hogenesch2009.sub2A.data.ann_Results.Rdata[overlap_RAIN, ])
+  Sig_Cor_Hughes_Hog_B_RAIN <- getCorrelation(controlData = timeSeries$Hughes2012.all.data.ann_Results.Rdata[overlap_RAIN, c(22:24, 1:21)], comparisonData = timeSeries$Hogenesch2009.sub2B.data.ann_Results.Rdata[overlap_RAIN, ])
+  Sig_Cor_Hog_A_Hog_B_RAIN <- getCorrelation(controlData = timeSeries$Hogenesch2009.sub2A.data.ann_Results.Rdata[overlap_RAIN, ], comparisonData = timeSeries$Hogenesch2009.sub2B.data.ann_Results.Rdata[overlap_RAIN, ])
 
-# JTK - Distribution given gene ordered samples and filtered for sig genes
-Sig_Cor_Zhang_Hughes_JTK <- getCorrelation(controlData = timeSeries$Zhang2014.all.data.ann_Results.Rdata[overlap_JTK, ], comparisonData = timeSeries$Hughes2012.all.data.ann_Results.Rdata[overlap_JTK, c(22:24, 1:21)])
-Sig_Cor_Zhang_Hog_A_JTK <- getCorrelation(controlData = timeSeries$Zhang2014.all.data.ann_Results.Rdata[overlap_JTK, ], comparisonData = timeSeries$Hogenesch2009.sub2A.data.ann_Results.Rdata[overlap_JTK, ])
-Sig_Cor_Zhang_Hog_B_JTK <- getCorrelation(controlData = timeSeries$Zhang2014.all.data.ann_Results.Rdata[overlap_JTK, ], comparisonData = timeSeries$Hogenesch2009.sub2B.data.ann_Results.Rdata[overlap_JTK, ])
-Sig_Cor_Hughes_Hog_A_JTK <- getCorrelation(controlData = timeSeries$Hughes2012.all.data.ann_Results.Rdata[overlap_JTK, c(22:24, 1:21)], comparisonData = timeSeries$Hogenesch2009.sub2A.data.ann_Results.Rdata[overlap_JTK, ])
-Sig_Cor_Hughes_Hog_B_JTK <- getCorrelation(controlData = timeSeries$Hughes2012.all.data.ann_Results.Rdata[overlap_JTK, c(22:24, 1:21)], comparisonData = timeSeries$Hogenesch2009.sub2B.data.ann_Results.Rdata[overlap_JTK, ])
-Sig_Cor_Hog_A_Hog_B_JTK <- getCorrelation(controlData = timeSeries$Hogenesch2009.sub2A.data.ann_Results.Rdata[overlap_JTK, ], comparisonData = timeSeries$Hogenesch2009.sub2B.data.ann_Results.Rdata[overlap_JTK, ])
+  # JTK - Distribution given gene ordered samples and filtered for sig genes
+  Sig_Cor_Zhang_Hughes_JTK <- getCorrelation(controlData = timeSeries$Zhang2014.all.data.ann_Results.Rdata[overlap_JTK, ], comparisonData = timeSeries$Hughes2012.all.data.ann_Results.Rdata[overlap_JTK, c(22:24, 1:21)])
+  Sig_Cor_Zhang_Hog_A_JTK <- getCorrelation(controlData = timeSeries$Zhang2014.all.data.ann_Results.Rdata[overlap_JTK, ], comparisonData = timeSeries$Hogenesch2009.sub2A.data.ann_Results.Rdata[overlap_JTK, ])
+  Sig_Cor_Zhang_Hog_B_JTK <- getCorrelation(controlData = timeSeries$Zhang2014.all.data.ann_Results.Rdata[overlap_JTK, ], comparisonData = timeSeries$Hogenesch2009.sub2B.data.ann_Results.Rdata[overlap_JTK, ])
+  Sig_Cor_Hughes_Hog_A_JTK <- getCorrelation(controlData = timeSeries$Hughes2012.all.data.ann_Results.Rdata[overlap_JTK, c(22:24, 1:21)], comparisonData = timeSeries$Hogenesch2009.sub2A.data.ann_Results.Rdata[overlap_JTK, ])
+  Sig_Cor_Hughes_Hog_B_JTK <- getCorrelation(controlData = timeSeries$Hughes2012.all.data.ann_Results.Rdata[overlap_JTK, c(22:24, 1:21)], comparisonData = timeSeries$Hogenesch2009.sub2B.data.ann_Results.Rdata[overlap_JTK, ])
+  Sig_Cor_Hog_A_Hog_B_JTK <- getCorrelation(controlData = timeSeries$Hogenesch2009.sub2A.data.ann_Results.Rdata[overlap_JTK, ], comparisonData = timeSeries$Hogenesch2009.sub2B.data.ann_Results.Rdata[overlap_JTK, ])
 
-NullDist <- c(Null_Cor_Zhang_Hughes, Null_Cor_Zhang_Hog_A, Null_Cor_Zhang_Hog_B, Null_Cor_Hughes_Hog_A, Null_Cor_Hughes_Hog_B, Null_Cor_Hog_A_Hog_B)
-OrderedDist <- c(Ordered_Cor_Zhang_Hughes, Ordered_Cor_Zhang_Hog_A, Ordered_Cor_Zhang_Hog_B, Ordered_Cor_Hughes_Hog_A, Ordered_Cor_Hughes_Hog_B, Ordered_Cor_Hog_A_Hog_B)
-SigDist <- c(Sig_Cor_Zhang_Hughes, Sig_Cor_Zhang_Hog_A, Sig_Cor_Zhang_Hog_B, Sig_Cor_Hughes_Hog_A, Sig_Cor_Hughes_Hog_B, Sig_Cor_Hog_A_Hog_B)
-SigDist_RAIN <- c(Sig_Cor_Zhang_Hughes_RAIN, Sig_Cor_Zhang_Hog_A_RAIN, Sig_Cor_Zhang_Hog_B_RAIN, Sig_Cor_Hughes_Hog_A_RAIN, Sig_Cor_Hughes_Hog_B_RAIN, Sig_Cor_Hog_A_Hog_B_RAIN)
-SigDist_JTK <- c(Sig_Cor_Zhang_Hughes_JTK, Sig_Cor_Zhang_Hog_A_JTK, Sig_Cor_Zhang_Hog_B_JTK, Sig_Cor_Hughes_Hog_A_JTK, Sig_Cor_Hughes_Hog_B_JTK, Sig_Cor_Hog_A_Hog_B_JTK)
+  NullDist <- c(Null_Cor_Zhang_Hughes, Null_Cor_Zhang_Hog_A, Null_Cor_Zhang_Hog_B, Null_Cor_Hughes_Hog_A, Null_Cor_Hughes_Hog_B, Null_Cor_Hog_A_Hog_B)
+  OrderedDist <- c(Ordered_Cor_Zhang_Hughes, Ordered_Cor_Zhang_Hog_A, Ordered_Cor_Zhang_Hog_B, Ordered_Cor_Hughes_Hog_A, Ordered_Cor_Hughes_Hog_B, Ordered_Cor_Hog_A_Hog_B)
+  SigDist <- c(Sig_Cor_Zhang_Hughes, Sig_Cor_Zhang_Hog_A, Sig_Cor_Zhang_Hog_B, Sig_Cor_Hughes_Hog_A, Sig_Cor_Hughes_Hog_B, Sig_Cor_Hog_A_Hog_B)
+  SigDist_RAIN <- c(Sig_Cor_Zhang_Hughes_RAIN, Sig_Cor_Zhang_Hog_A_RAIN, Sig_Cor_Zhang_Hog_B_RAIN, Sig_Cor_Hughes_Hog_A_RAIN, Sig_Cor_Hughes_Hog_B_RAIN, Sig_Cor_Hog_A_Hog_B_RAIN)
+  SigDist_JTK <- c(Sig_Cor_Zhang_Hughes_JTK, Sig_Cor_Zhang_Hog_A_JTK, Sig_Cor_Zhang_Hog_B_JTK, Sig_Cor_Hughes_Hog_A_JTK, Sig_Cor_Hughes_Hog_B_JTK, Sig_Cor_Hog_A_Hog_B_JTK)
 
-par(mfrow = c(1, 1), font = 2)
-lineWidth <- 6
-plot(ecdf(SigDist_JTK), pch = NA ,xlim = range(c(SigDist, SigDist_JTK, SigDist_RAIN, OrderedDist, NullDist)), lwd = lineWidth, col = "#377eb8", main = paste0(dataSet," Rank Corr eCDF"), ylab = "eCDF", xlab = expression(paste("Rank Correlation (", rho, ")")))
-plot(ecdf(SigDist), pch = NA, add = TRUE, lwd = lineWidth, col = "#ff7f00")
-plot(ecdf(SigDist_RAIN), add = TRUE, lwd = lineWidth, col = "black")
-plot(ecdf(OrderedDist), add = TRUE, lwd = lineWidth, col = "green3")
-plot(ecdf(NullDist), add = TRUE, lwd = lineWidth, col = "grey")
-legend(
-  x = "topleft", inset = c(0.01, 0.05), legend = c("TimeCycle", "JTK_CYCLE", "RAIN", "All Gene Correlation", "Null Distribution"),
-  col = c("#ff7f00", "#377eb8", "Black", "green3", "grey"), lty = 1, lwd = 4, cex = 0.75, box.lwd = 0
-)
-box(lwd = 2)
+  par(mfrow = c(1, 1), font = 2)
+  lineWidth <- 6
+  plot(ecdf(SigDist_JTK), pch = NA, xlim = range(c(SigDist, SigDist_JTK, SigDist_RAIN, OrderedDist, NullDist)), lwd = lineWidth, col = "#377eb8", main = paste0(dataSet, " Rank Corr eCDF"), ylab = "eCDF", xlab = expression(paste("Rank Correlation (", rho, ")")))
+  plot(ecdf(SigDist), pch = NA, add = TRUE, lwd = lineWidth, col = "#ff7f00")
+  plot(ecdf(SigDist_RAIN), add = TRUE, lwd = lineWidth, col = "black")
+  plot(ecdf(OrderedDist), add = TRUE, lwd = lineWidth, col = "green3")
+  plot(ecdf(NullDist), add = TRUE, lwd = lineWidth, col = "grey")
+  legend(
+    x = "topleft", inset = c(0.01, 0.05), legend = c("TimeCycle", "JTK_CYCLE", "RAIN", "All Gene Correlation", "Null Distribution"),
+    col = c("#ff7f00", "#377eb8", "Black", "green3", "grey"), lty = 1, lwd = 4, cex = 0.75, box.lwd = 0
+  )
+  box(lwd = 2)
 }
 dev.off()
 

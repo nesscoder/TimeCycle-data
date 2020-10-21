@@ -261,126 +261,128 @@ plot_percentCorrect <- function(data, bottomAxis = "Method 1", topAxis = "Method
 setwd("~/Desktop/TimeCycle-data/Results/Synthetic/RAIN/")
 all.files <- as.list(dir())
 
-# what should we plot
-toPlot <- "2_48_NoiseLV_0.1_BioRep_1.Rdata"
+other_noiseLevels <- c(0, 0.2, 0.3, 0.4)
+for (nl in other_noiseLevels) {
+  # what should we plot
+  toPlot <- paste0("2_48_NoiseLV_", nl, "_BioRep_1.Rdata")
 
-ordering <- c("sin", "peak", "saw", "lTrend", "damp", "amped", "contract", "flat", "linear", "sigmoid", "exp")
-waveFormCols <- c("#e41a1c", "#377eb8", "#4daf4a", "#984ea3", "#ff7f00", "#FFFF33", "#a65628", "#cccccc", "#969696", "#636363", "#252525")
-
-
-theme_set(new = theme_light())
-theme_replace(
-  panel.border = element_rect(colour = "black", fill = NA, size = 2),
-  text = element_text(size = 16, face = "bold")
-)
-
-plottingResults <- data.frame(list(
-  TimeCycle = TC_results[, toPlot],
-  JTK = JTK_results[, toPlot],
-  RAIN = RAIN_results[, toPlot],
-  SW1PERS = sw1per_results[, toPlot]
-))
-rownames(plottingResults) <- rownames(TC_results)
-
-TimeCycle <- "TimeCycle"
-JTK <- "JTK"
-RAIN <- "RAIN"
-SW1PERS <- "SW1PERS"
+  ordering <- c("sin", "peak", "saw", "lTrend", "damp", "amped", "contract", "flat", "linear", "sigmoid", "exp")
+  waveFormCols <- c("#e41a1c", "#377eb8", "#4daf4a", "#984ea3", "#ff7f00", "#FFFF33", "#a65628", "#cccccc", "#969696", "#636363", "#252525")
 
 
-p1 <- plot_hist(
-  data = plottingResults,
-  xAxis = TimeCycle,
-  waveFormCols = waveFormCols
-)
+  theme_set(new = theme_light())
+  theme_replace(
+    panel.border = element_rect(colour = "black", fill = NA, size = 2),
+    text = element_text(size = 16, face = "bold")
+  )
 
-p2 <- plot_hist(
-  data = plottingResults,
-  xAxis = JTK,
-  waveFormCols = waveFormCols
-)
+  plottingResults <- data.frame(list(
+    TimeCycle = TC_results[, toPlot],
+    JTK = JTK_results[, toPlot],
+    RAIN = RAIN_results[, toPlot],
+    SW1PERS = sw1per_results[, toPlot]
+  ))
+  rownames(plottingResults) <- rownames(TC_results)
+
+  TimeCycle <- "TimeCycle"
+  JTK <- "JTK"
+  RAIN <- "RAIN"
+  SW1PERS <- "SW1PERS"
 
 
-p3 <- plot_hist(
-  data = plottingResults,
-  xAxis = RAIN,
-  waveFormCols = waveFormCols
-)
+  p1 <- plot_hist(
+    data = plottingResults,
+    xAxis = TimeCycle,
+    waveFormCols = waveFormCols
+  )
 
-p4 <- plot_hist(
-  data = plottingResults,
-  xAxis = SW1PERS,
-  waveFormCols = waveFormCols,
-  xAxisLab = "SW1PERS*"
-)
+  p2 <- plot_hist(
+    data = plottingResults,
+    xAxis = JTK,
+    waveFormCols = waveFormCols
+  )
 
-p5 <- plot_scatter(
-  data = plottingResults,
-  xAxis = TimeCycle,
-  yAxis = JTK,
-  waveFormCols = waveFormCols
-)
 
-p6 <- plot_scatter(
-  data = plottingResults,
-  xAxis = TimeCycle,
-  yAxis = RAIN,
-  waveFormCols = waveFormCols
-)
+  p3 <- plot_hist(
+    data = plottingResults,
+    xAxis = RAIN,
+    waveFormCols = waveFormCols
+  )
 
-p7 <- plot_scatter(
-  data = plottingResults,
-  xAxis = JTK,
-  yAxis = RAIN,
-  waveFormCols = waveFormCols
-)
+  p4 <- plot_hist(
+    data = plottingResults,
+    xAxis = SW1PERS,
+    waveFormCols = waveFormCols,
+    xAxisLab = "SW1PERS*"
+  )
 
-p8 <- plot_scatter(
-  data = plottingResults,
-  xAxis = TimeCycle,
-  yAxis = SW1PERS,
-  waveFormCols = waveFormCols,
-  yAxisLab = "SW1PERS*"
-)
+  p5 <- plot_scatter(
+    data = plottingResults,
+    xAxis = TimeCycle,
+    yAxis = JTK,
+    waveFormCols = waveFormCols
+  )
 
-p9 <- plot_scatter(
-  data = plottingResults,
-  xAxis = JTK,
-  yAxis = SW1PERS,
-  waveFormCols = waveFormCols,
-  yAxisLab = "SW1PERS*"
-)
+  p6 <- plot_scatter(
+    data = plottingResults,
+    xAxis = TimeCycle,
+    yAxis = RAIN,
+    waveFormCols = waveFormCols
+  )
 
-p10 <- plot_scatter(
-  data = plottingResults,
-  xAxis = RAIN,
-  yAxis = SW1PERS,
-  waveFormCols = waveFormCols,
-  yAxisLab = "SW1PERS*"
-)
+  p7 <- plot_scatter(
+    data = plottingResults,
+    xAxis = JTK,
+    yAxis = RAIN,
+    waveFormCols = waveFormCols
+  )
 
-p11 <- plot_percentCorrect(data = plottingResults, topAxis = TimeCycle, bottomAxis = JTK, waveFormCols = waveFormCols)
-p12 <- plot_percentCorrect(data = plottingResults, topAxis = TimeCycle, bottomAxis = RAIN, waveFormCols = waveFormCols)
-p13 <- plot_percentCorrect(data = plottingResults, topAxis = TimeCycle, bottomAxis = SW1PERS, waveFormCols = waveFormCols)
-p14 <- plot_percentCorrect(data = plottingResults, topAxis = JTK, bottomAxis = RAIN, waveFormCols = waveFormCols)
-p15 <- plot_percentCorrect(data = plottingResults, topAxis = JTK, bottomAxis = SW1PERS, waveFormCols = waveFormCols)
-p16 <- plot_percentCorrect(data = plottingResults, topAxis = RAIN, bottomAxis = SW1PERS, waveFormCols = waveFormCols)
+  p8 <- plot_scatter(
+    data = plottingResults,
+    xAxis = TimeCycle,
+    yAxis = SW1PERS,
+    waveFormCols = waveFormCols,
+    yAxisLab = "SW1PERS*"
+  )
 
-# plot the layout
-lay <- rbind(
-  c(1, 11, 12, 13),
-  c(5, 2, 14, 15),
-  c(6, 7, 3, 16),
-  c(8, 9, 10, 4)
-)
+  p9 <- plot_scatter(
+    data = plottingResults,
+    xAxis = JTK,
+    yAxis = SW1PERS,
+    waveFormCols = waveFormCols,
+    yAxisLab = "SW1PERS*"
+  )
 
-pdf(paste0("~/Desktop/TimeCycle-data/Results/Figures/", gsub(pattern = ".Rdata", replacement = ".pdf", toPlot)),
-  width = 14, height = 13
-)
+  p10 <- plot_scatter(
+    data = plottingResults,
+    xAxis = RAIN,
+    yAxis = SW1PERS,
+    waveFormCols = waveFormCols,
+    yAxisLab = "SW1PERS*"
+  )
 
-grid.arrange(grobs = list(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16), layout_matrix = lay)
-dev.off()
+  p11 <- plot_percentCorrect(data = plottingResults, topAxis = TimeCycle, bottomAxis = JTK, waveFormCols = waveFormCols)
+  p12 <- plot_percentCorrect(data = plottingResults, topAxis = TimeCycle, bottomAxis = RAIN, waveFormCols = waveFormCols)
+  p13 <- plot_percentCorrect(data = plottingResults, topAxis = TimeCycle, bottomAxis = SW1PERS, waveFormCols = waveFormCols)
+  p14 <- plot_percentCorrect(data = plottingResults, topAxis = JTK, bottomAxis = RAIN, waveFormCols = waveFormCols)
+  p15 <- plot_percentCorrect(data = plottingResults, topAxis = JTK, bottomAxis = SW1PERS, waveFormCols = waveFormCols)
+  p16 <- plot_percentCorrect(data = plottingResults, topAxis = RAIN, bottomAxis = SW1PERS, waveFormCols = waveFormCols)
 
+  # plot the layout
+  lay <- rbind(
+    c(1, 11, 12, 13),
+    c(5, 2, 14, 15),
+    c(6, 7, 3, 16),
+    c(8, 9, 10, 4)
+  )
+
+  pdf(paste0("~/Desktop/TimeCycle-data/Results/Figures/", gsub(pattern = ".Rdata", replacement = ".pdf", toPlot)),
+    width = 14, height = 13
+  )
+
+  grid.arrange(grobs = list(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16), layout_matrix = lay)
+  dev.off()
+}
 # })
 
 # pdf("~/Desktop/comparisonPlot_blank.pdf",width = 14,height = 16)
