@@ -44,29 +44,32 @@ plotAlluvial <- function(data, plotTitle, col) {
   theme_set(new = theme_light())
   theme_replace(
     panel.border = element_rect(colour = "black", fill = NA, size = 2),
-    text = element_text(size = 16, face = "bold")
-  )
+    text = element_text(size = 16, face = "bold"))
+  
   data$overlaps <- as.factor(as.character(data$overlaps))
   data$gene <- as.factor(data$gene)
-  ggplot(
-    data,
-    aes(
-      x = threshold, stratum = overlaps, alluvium = gene,
-      fill = overlaps, label = overlaps
-    )
-  ) +
+  data$threshold <- as.factor(data$threshold)
+  
+  ggplot(data = data, mapping = aes(
+           x = threshold, 
+           stratum = overlaps, 
+           alluvium = gene,
+           fill = overlaps, 
+           label = overlaps)) +
     # scale_fill_brewer(type = "qual", palette = "Set1") +
     scale_fill_manual(values = col) +
-    geom_flow(stat = "alluvium", lode.guidance = "backfront") +
+    geom_flow() +
     geom_stratum() +
     scale_x_discrete(labels = c("FDR < 0.05", "FDR < 0.1")) +
     theme(legend.position = "bottom", panel.grid.major.x = element_blank()) +
     guides(fill = guide_legend(override.aes = list(linetype = 0, shape = 22, size = 5), title = "Number of Overlaps", title.position = "top", ncol = 5, byrow = TRUE)) +
     xlab(label = "") +
-    geom_text(stat = "stratum", aes(label = 100 * round(after_stat(prop), 3))) +
+    ggrepel::geom_text_repel(data = subset(data, subset = as.numeric(threshold) == 1), stat = "stratum", aes(label = 100 * round(after_stat(prop), 3)),
+                             size = 4, direction = "y", nudge_x = -0.5) +
+    ggrepel::geom_text_repel(data = subset(data, subset = as.numeric(threshold) == 2), stat = "stratum", aes(label = 100 * round(after_stat(prop), 3)),
+                             size = 4, direction = "y", nudge_x = 0.5) +
     ggtitle(plotTitle)
 }
-
 # customColors <- c("#7F3C8D","#11A579","#3969AC","#F2B701","#E73F74","#80BA5A","#E68310","#008695","#CF1C90","#f97b72","#4b4b8f","#A5AA99")
 customColors <- c("#cccccc", "#377eb8", "#4daf4a", "#984ea3", "#ff7f00", "#FFFF33", "#a65628", "#cccccc", "#969696", "#636363", "#252525")
 
@@ -76,7 +79,6 @@ p2 <- plotAlluvial(data = JTK_sigGenes, plotTitle = "JTK_CYCLE", col = customCol
 p3 <- plotAlluvial(data = RAIN_sigGenes, plotTitle = "RAIN", col = customColors[1:5])
 grid.arrange(grobs = list(p1, p2, p3), nrow = 1)
 dev.off()
-
 
 # Correlation Across Data Sets
 alpha <- 0.1

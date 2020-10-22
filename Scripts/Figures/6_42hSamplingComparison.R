@@ -1,7 +1,7 @@
 ##########################################
 # Plot Results
 ##########################################
-load("~/Desktop/TimeCycle-data/Results/SlidingWindows/42HourComparison_Zhang_Ceiling.Rdata")
+load("~/Desktop/TimeCycle-data/Results/SlidingWindows/42HourComparison.Rdata")
 library(UpSetR)
 library(tidyverse)
 library(ggalluvial)
@@ -44,26 +44,30 @@ plotAlluvial <- function(data, plotTitle, col) {
   theme_set(new = theme_light())
   theme_replace(
     panel.border = element_rect(colour = "black", fill = NA, size = 2),
-    text = element_text(size = 16, face = "bold")
-  )
+    text = element_text(size = 16, face = "bold"))
+  
   data$overlaps <- as.factor(as.character(data$overlaps))
   data$gene <- as.factor(data$gene)
-  ggplot(
-    data,
-    aes(
-      x = threshold, stratum = overlaps, alluvium = gene,
-      fill = overlaps, label = overlaps
-    )
-  ) +
+  data$threshold <- as.factor(data$threshold)
+  
+  ggplot(data = data, mapping = aes(
+    x = threshold, 
+    stratum = overlaps, 
+    alluvium = gene,
+    fill = overlaps, 
+    label = overlaps)) +
     # scale_fill_brewer(type = "qual", palette = "Set1") +
     scale_fill_manual(values = col) +
-    geom_flow(stat = "alluvium", lode.guidance = "backfront") +
+    geom_flow() +
     geom_stratum() +
     scale_x_discrete(labels = c("FDR < 0.05", "FDR < 0.1")) +
     theme(legend.position = "bottom", panel.grid.major.x = element_blank()) +
     guides(fill = guide_legend(override.aes = list(linetype = 0, shape = 22, size = 5), title = "Number of Overlaps", title.position = "top", ncol = 5, byrow = TRUE)) +
     xlab(label = "") +
-    geom_text(stat = "stratum", aes(label = 100 * round(after_stat(prop), 3))) +
+    ggrepel::geom_text_repel(data = subset(data, subset = as.numeric(threshold) == 1), stat = "stratum", aes(label = 100 * round(after_stat(prop), 3)),
+                             size = 4, direction = "y", nudge_x = -0.5) +
+    ggrepel::geom_text_repel(data = subset(data, subset = as.numeric(threshold) == 2), stat = "stratum", aes(label = 100 * round(after_stat(prop), 3)),
+                             size = 4, direction = "y", nudge_x = 0.5) +
     ggtitle(plotTitle)
 }
 

@@ -192,7 +192,7 @@ toPlot <- rbind(JTK_CYCLE, TimeCycle, RAIN, SW1PERs)
 
 pdf("~/Desktop/TimeCycle-data/Results/Figures/AUCcompPlots.pdf", width = 7 * 1.5, height = 3.5 * 1.5)
 
-toPlot <- as.data.frame(toPlot) %>%
+dataToPlot <- as.data.frame(toPlot) %>%
   filter(Length != 24)
 
 theme_set(new = theme_light())
@@ -201,8 +201,7 @@ theme_replace(
   text = element_text(size = 16, face = "bold")
 )
 
-ggplot(
-  toPlot,
+ggplot(data = dataToPlot,
   aes(
     x = as.numeric(numSamples),
     y = as.numeric(AUC),
@@ -231,7 +230,7 @@ dev.off()
 
 
 pdf("~/Desktop/TimeCycle-data/Results/Figures/sdAUCcomp.pdf", width = 7 * 1.5, height = 3.5 * 1.5)
-sdToPlot <- toPlot %>%
+sdToPlot <- dataToPlot %>%
   summarySE(measurevar = "AUC", groupvars = c("Method", "Length", "Interval", "Replicates")) %>%
   mutate(numSamples = (Length / Interval + 1) * Replicates)
 
