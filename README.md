@@ -55,11 +55,10 @@ The TimeCycle Git Repository includes the following:
 
 ### Reference
 
-```{=html}
 <!--
 TimeCycle is Currently Published in the <JOURNAL NAME>: [See Article]()
 
 Ness-Cohn, E. & Braun, R. TimeCycle: Topology Inspired MEthod for the Detection of Cycling Transcripts in Circadian Time-Series Data.
 -->
-```
+
 TimeCycle 2020, Northwestern University
