@@ -386,12 +386,20 @@ for (dataSet in c("Hogenesch_2A", "Hogenesch_2B", "Hughes_2", "Zhang_2")) {
     col = c("#ff7f00", "#377eb8", "Black", "green3", "grey"), lty = 1, lwd = 4, cex = 0.75, box.lwd = 0
   )
   box(lwd = 2)
+  
+  print(ks.test(x = SigDist, y = SigDist_RAIN))
+  print(ks.test(x = SigDist_JTK, y = SigDist_RAIN))
+  
+  print(ks.test(x = SigDist, y = NullDist))
+  print(ks.test(x = SigDist_JTK, y = NullDist))
+  
+  print(ks.test(x = SigDist, y = OrderedDist))
+  print(ks.test(x = SigDist_JTK, y = OrderedDist))
 }
 dev.off()
 
-ks.test(x = SigDist, y = SigDist_JTK)
-ks.test(x = SigDist_RAIN, y = SigDist)
-ks.test(OrderedDist, SigDist_RAIN)
+
+
 
 pdf("~/Desktop/blank2.pdf", width = 24, height = 16)
 plot.new()
