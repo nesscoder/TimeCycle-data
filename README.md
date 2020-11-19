@@ -6,7 +6,8 @@
 
 <!-- badges: start -->
 
-[![](https://img.shields.io/github/languages/code-size/nesscoder/TimeCycle-data.svg)](https://github.com/nesscoder/TimeCycle-data)
+[![](https://img.shields.io/github/repo-size/nesscoder/TimeCycle-data)](https://github.com/nesscoder/TimeCycle-data)
+
 
 <!-- badges: end -->
 
