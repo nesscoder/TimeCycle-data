@@ -5,18 +5,16 @@
 ------------------------------------------------------------------------
 
 <!-- badges: start -->
-
+[![](https://img.shields.io/badge/doi-10.1101/2020.11.19.389981-yellow.svg)](https://doi.org/10.1101/2020.11.19.389981)
 [![](https://img.shields.io/github/repo-size/nesscoder/TimeCycle-data)](https://github.com/nesscoder/TimeCycle-data)
-
-
 <!-- badges: end -->
 
 ------------------------------------------------------------------------
 
 > This Git Repo contains all the data, results, and analysis scripts associated with the TimeCycle algorithm.
 
+-   See the TimeCycle Paper at <https://doi.org/10.1101/2020.11.19.389981>
 -   See the TimeCycle Package at <https://nesscoder.github.io/TimeCycle/>
--   See the TimeCycle Paper at \< INSERT LINK \>
 
 ------------------------------------------------------------------------
 
