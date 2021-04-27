@@ -15,7 +15,7 @@ data <- as.data.frame(t(apply(data, 1, function(expr){
 })))
 
 st <- system.time({
-results <- rain(t(data), deltat = as.numeric(args[4]), period = as.numeric(args[5]), adjp.method = "rawp",peak.border = c(as.numeric(args[6]),as.numeric(args[7])), verbose = F)
+results <- rain(t(data), deltat = as.numeric(args[4]), period = as.numeric(args[5]), peak.border = c(as.numeric(args[6]),as.numeric(args[7])), verbose = F)
 })
 #remove all other data storage except results and initial data
 rm(list=setdiff(ls(), c("st","results","args")))

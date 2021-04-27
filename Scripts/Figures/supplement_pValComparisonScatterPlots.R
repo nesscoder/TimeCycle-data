@@ -26,7 +26,7 @@ names(data) <- all.files
 ###############################
 # EXTRACT DATA FRAME OF INTEREST
 ###############################
-# get the adjusted pvalues and make them into a singel dataframe
+# get the adjusted pvalues and make them into a single dataframe
 TC_results <- lapply(data, function(df) {
   df$pVals
 })
@@ -55,7 +55,7 @@ names(data) <- all.files
 ###############################
 # EXTRACT DATA FRAME OF INTEREST
 ###############################
-# get the adjusted pvalues and make them into a singel dataframe
+# get the adjusted pvalues and make them into a single dataframe
 JTK_results <- lapply(data, function(df) {
   df$ADJ.P
 })
@@ -84,7 +84,7 @@ names(data) <- all.files
 ###############################
 # EXTRACT DATA FRAME OF INTEREST
 ###############################
-# get the adjusted pvalues and make them into a singel dataframe
+# get the adjusted pvalues and make them into a single dataframe
 RAIN_results <- lapply(data, function(df) {
   df$pVal
 })
@@ -108,7 +108,7 @@ names(data) <- gsub(pattern = "_sw_scores.txt", replacement = ".Rdata", x = all.
 ###############################
 # EXTRACT DATA FRAME OF INTEREST
 ###############################
-# get the adjusted pvalues and make them into a singel dataframe
+# get the adjusted pvalues and make them into a single dataframe
 sw1per_results <- lapply(data, function(df) {
   df$score
 })
@@ -383,8 +383,3 @@ for (nl in other_noiseLevels) {
   grid.arrange(grobs = list(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16), layout_matrix = lay)
   dev.off()
 }
-# })
-
-# pdf("~/Desktop/comparisonPlot_blank.pdf",width = 14,height = 16)
-# plot.new()
-# dev.off()

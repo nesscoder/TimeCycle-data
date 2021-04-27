@@ -21,7 +21,7 @@ module purge all
 module load R/3.5.1
 
 ## set your working directory 
-cd /projects/p30673/TimeCycleV3/Scripts/Synthetic/
+cd /home/emn6548/TimeCycleV3/Scripts/Synthetic/
 
 Rscript quest_script_main_RAIN.R $fileName $fileIn $fileOut $interval $period $rep $peak1 $peak2
 EOJ

@@ -22,7 +22,7 @@ module purge all
 module load R/3.6.3
 
 # By default all file paths are relative to the directory where you submitted the job.
-cd /projects/p30673/TimeCycleV3/Scripts/Biological/
+cd /home/emn6548/TimeCycle/Scripts/Biological/
 
 Rscript quest_script_main_TimeCycle.R $fileName $fileIn $fileOut $timepoints $reps $maxLag
 EOJ

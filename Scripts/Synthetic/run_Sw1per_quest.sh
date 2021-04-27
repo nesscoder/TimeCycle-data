@@ -31,7 +31,7 @@ matlab -nosplash -nodesktop -singleCompThread -r "data_file_path = '${fileIn}'; 
 EOJ`
 
 echo "JobID = ${JOB} for parameters ${filename} submitted on `date`"
-done < masterFilePath_sw1per_failed.txt
+done < masterFilePath_sw1per.txt
 
 exit
 

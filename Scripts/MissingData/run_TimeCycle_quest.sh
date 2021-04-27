@@ -22,7 +22,7 @@ module purge all
 module load R/3.5.1
 
 # By default all file paths are relative to the directory where you submitted the job.
-cd /projects/p30673/TimeCycleV3/Scripts/Biological/
+cd /home/emn6548/TimeCycle/Scripts/MissingData/
 
 Rscript quest_script_main_TimeCycle.R $fileName $fileIn $fileOut $timepoints $reps $maxLag $missingData
 EOJ
@@ -33,5 +33,5 @@ done < masterFilePath_timeCycle.txt
 exit
 
 # make this file executable and then run from the command line
-# chmod u+x run_TimeCycle_test.sh
-# ./run_TimeCycle_test.sh
+# chmod u+x run_TimeCycle.sh
+# ./run_TimeCycle.sh

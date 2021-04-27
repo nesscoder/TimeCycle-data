@@ -27,7 +27,7 @@ names(data) <- all.files
 ###############################
 # EXTRACT DATA FRAME OF INTEREST
 ###############################
-# get the adjusted pvalues and make them into a singel dataframe
+# get the adjusted pvalues and make them into a single dataframe
 TC_results <- lapply(data, function(df) {
   df$pVals
 })
@@ -60,16 +60,16 @@ plotData <- data.frame(AUC_TimeCycle, noiseLevels, missingness)
 
 ## --------------------------------------- Plot Results --------------------------------
 
-pdf(file = "~/Desktop/TimeCycle-data/Results/Figures/missingness.pdf", width = 12, height = 8)
+pdf(file = "~/Desktop/TimeCycle-data/Results/Figures/missingness.pdf", width = 10, height = 8)
 # plot AUC CURVES and ROC curves layout
 layout(matrix(
   data = c(
-    1, 1, 1, 1, 1,
-    1, 1, 1, 1, 1,
-    2, 3, 4, 5, 6,
-    7, 7, 7, 7, 7
+    1, 1, 1, 1,
+    1, 1, 1, 1,
+    2, 3, 4, 5,
+    6, 6, 6, 6
   ),
-  ncol = 5,
+  ncol = 4,
   byrow = T
 ))
 
@@ -78,7 +78,7 @@ col_pal_fill <- c("grey", "#fff800", "#f37200", "#cf0000", "#000000")
 col_pal_outline <- rep("black", 5)
 trnplvl <- 1 # transparency Level
 
-# set up plotting aread
+# set up plotting area
 par(font = 2)
 plot(
   x = NULL,
@@ -100,14 +100,14 @@ axis(side = 2, lwd = 2)
 box(lwd = 3)
 
 # plot TC results
-for (i in unique(plotData$noiseLevels)) {
+for (i in unique(plotData$noiseLevels)[-1]) {
   x <- dplyr::filter(plotData, noiseLevels == i) %>%
-    arrange(missingness) %>%
-    select(missingness)
+    dplyr::arrange(missingness) %>%
+    dplyr::select(missingness)
 
   y <- dplyr::filter(plotData, noiseLevels == i) %>%
-    arrange(missingness) %>%
-    select(AUC_TimeCycle)
+    dplyr::arrange(missingness) %>%
+    dplyr::select(AUC_TimeCycle)
 
 
   x <- as.vector(unlist(x))
@@ -127,8 +127,8 @@ for (i in unique(plotData$noiseLevels)) {
 
 # add Legends
 legend("bottomleft",
-  legend = unique(noiseLevels),
-  fil = col_pal_fill,
+  legend = unique(noiseLevels)[-1],
+  fil = col_pal_fill[-1],
   title = "Noise Level",
   bg = NA,
   box.lwd = 0
@@ -150,7 +150,7 @@ metaData <- lapply(metaData, function(x) {
 })
 metaData <- do.call(rbind, metaData)
 
-rocPlots <- sapply(unique(plotData$noiseLevels), function(NLtoCheck) {
+rocPlots <- sapply(unique(plotData$noiseLevels)[-1], function(NLtoCheck) {
 
   # select pVals of at specific Noise Level
   keep <- which(plotData[, 2] == NLtoCheck)
@@ -183,7 +183,7 @@ rocPlots <- sapply(unique(plotData$noiseLevels), function(NLtoCheck) {
 # histograms of pVals
 p <- list()
 count <- 1
-keep <- which(as.numeric(missingness) == 12)
+keep <- which(as.numeric(missingness) == 12)[-1]
 
 for (i in keep) {
   TCResults <- data[[i]]
@@ -209,10 +209,10 @@ for (i in keep) {
 
 
 lay <- matrix(c(
-  7, 7, 7, 7, 7,
-  7, 7, 7, 7, 7,
-  7, 7, 7, 7, 7,
-  1, 2, 3, 4, 5
+  7, 7, 7, 7,
+  7, 7, 7, 7,
+  7, 7, 7, 7,
+  2, 3, 4, 5
 ),
 nrow = 4, byrow = T
 )

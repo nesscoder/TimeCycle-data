@@ -1,0 +1,13 @@
+Hogenesch2009.all.data.ann	/home/emn6548/TimeCycle/Data/RealData/Hogenesch2009.all.data.ann.txt	/home/emn6548/TimeCycle/Results/Biological/GeneCycle/Hogenesch2009.all.data.ann_Results.Rdata	1	48	1
+Hogenesch2009.sub2A.data.ann	/home/emn6548/TimeCycle/Data/RealData/Hogenesch2009.sub2A.data.ann.txt	/home/emn6548/TimeCycle/Results/Biological/GeneCycle/Hogenesch2009.sub2A.data.ann_Results.Rdata	2	24	1
+Hogenesch2009.sub2B.data.ann	/home/emn6548/TimeCycle/Data/RealData/Hogenesch2009.sub2B.data.ann.txt	/home/emn6548/TimeCycle/Results/Biological/GeneCycle/Hogenesch2009.sub2B.data.ann_Results.Rdata	2	24	1
+Hogenesch2009.sub4A.data.ann	/home/emn6548/TimeCycle/Data/RealData/Hogenesch2009.sub4A.data.ann.txt	/home/emn6548/TimeCycle/Results/Biological/GeneCycle/Hogenesch2009.sub4A.data.ann_Results.Rdata	4	12	1
+Hogenesch2009.sub4B.data.ann	/home/emn6548/TimeCycle/Data/RealData/Hogenesch2009.sub4B.data.ann.txt	/home/emn6548/TimeCycle/Results/Biological/GeneCycle/Hogenesch2009.sub4B.data.ann_Results.Rdata	4	12	1
+Hogenesch2009.sub4C.data.ann	/home/emn6548/TimeCycle/Data/RealData/Hogenesch2009.sub4C.data.ann.txt	/home/emn6548/TimeCycle/Results/Biological/GeneCycle/Hogenesch2009.sub4C.data.ann_Results.Rdata	4	12	1
+Hogenesch2009.sub4D.data.ann	/home/emn6548/TimeCycle/Data/RealData/Hogenesch2009.sub4D.data.ann.txt	/home/emn6548/TimeCycle/Results/Biological/GeneCycle/Hogenesch2009.sub4D.data.ann_Results.Rdata	4	12	1
+Hughes2012.all.data.ann	/home/emn6548/TimeCycle/Data/RealData/Hughes2012.all.data.ann.txt	/home/emn6548/TimeCycle/Results/Biological/GeneCycle/Hughes2012.all.data.ann_Results.Rdata	2	24	1
+Zhang2014.all.data.ann	/home/emn6548/TimeCycle/Data/RealData/Zhang2014.all.data.ann.txt	/home/emn6548/TimeCycle/Results/Biological/GeneCycle/Zhang2014.all.data.ann_Results.Rdata	2	24	1
+Hughes2012.subA.data.ann	/home/emn6548/TimeCycle/Data/RealData/Hughes2012.subA.data.ann.txt	/home/emn6548/TimeCycle/Results/Biological/GeneCycle/Hughes2012.subA.data.ann.Rdata	4	12	1
+Hughes2012.subB.data.ann	/home/emn6548/TimeCycle/Data/RealData/Hughes2012.subB.data.ann.txt	/home/emn6548/TimeCycle/Results/Biological/GeneCycle/Hughes2012.subB.data.ann_Results.Rdata	4	12	1
+Zhang2014.subA.data.ann	/home/emn6548/TimeCycle/Data/RealData/Zhang2014.subA.data.ann.txt	/home/emn6548/TimeCycle/Results/Biological/GeneCycle/Zhang2014.subA.data.ann_Results.Rdata	4	12	1
+Zhang2014.subB.data.ann	/home/emn6548/TimeCycle/Data/RealData/Zhang2014.subB.data.ann.txt	/home/emn6548/TimeCycle/Results/Biological/GeneCycle/Zhang2014.subB.data.ann_Results.Rdata	4	12	1

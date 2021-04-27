@@ -1,5 +1,5 @@
 #!/bin/bash
-cd ~/Desktop/TimeCycleV3/Scripts/Biological
+cd ~/Desktop/TimeCycle-data/Scripts/Biological
 
 while IFS=$'\t' read -r fileName fileIn fileOut timepoints reps maxLag; do
 	echo "$fileName submitted on `date`"
