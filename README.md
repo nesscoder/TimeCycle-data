@@ -13,7 +13,7 @@
 
 > This Git Repo contains all the data, results, and analysis scripts associated with the TimeCycle algorithm.
 
--   See the TimeCycle Paper at <https://doi.org/10.1101/2020.11.19.389981>
+-   See the TimeCycle Paper at <https://doi.org/10.1093/bioinformatics/btab476>
 -   See the TimeCycle Package at <https://nesscoder.github.io/TimeCycle/>
 
 ------------------------------------------------------------------------
@@ -54,10 +54,8 @@ The TimeCycle Git Repository includes the following:
 
 ### Reference
 
-<!--
-TimeCycle is Currently Published in the <JOURNAL NAME>: [See Article]()
+TimeCycle is Currently Published in Bioinfomatics: [See Article](https://doi.org/10.1093/bioinformatics/btab476)
 
-Ness-Cohn, E. & Braun, R. TimeCycle: Topology Inspired MEthod for the Detection of Cycling Transcripts in Circadian Time-Series Data.
--->
+Elan Ness-Cohn, Rosemary Braun, TimeCycle: Topology Inspired MEthod for the Detection of Cycling Transcripts in Circadian Time-Series Data, Bioinformatics, 2021; btab476, https://doi.org/10.1093/bioinformatics/btab476
 
 TimeCycle 2020, Northwestern University
