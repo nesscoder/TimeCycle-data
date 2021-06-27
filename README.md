@@ -5,7 +5,7 @@
 ------------------------------------------------------------------------
 
 <!-- badges: start -->
-[![](https://img.shields.io/badge/doi-10.1101/2020.11.19.389981-yellow.svg)](https://doi.org/10.1101/2020.11.19.389981)
+[![](https://img.shields.io/badge/10.1093/bioinformatics/btab476-yellow.svg)](https://doi.org/10.1093/bioinformatics/btab476)
 [![](https://img.shields.io/github/repo-size/nesscoder/TimeCycle-data)](https://github.com/nesscoder/TimeCycle-data)
 <!-- badges: end -->
 
